@@ -1,0 +1,12 @@
+.input_text + * {
+  color: #cbd5e1;
+}
+
+.input_text:focus + * {
+  color: #e3aafb;
+}
+
+.input_text:not([type="email"], [type="text"]) ~ span:hover * {
+  color: #e3aafb;
+  cursor: pointer;
+}
