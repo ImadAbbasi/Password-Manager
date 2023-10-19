@@ -1,11 +1,15 @@
+import Nav from "@/components/Nav";
+import SideNav from "@/components/SideNav";
 import React from "react";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-400 to-fuchsia-300">
-      <div className="mx-5 bg-slate-100 shadow-lg rounded-md w-96">
-        <div className="flex flex-col justify-evenly h-full">
-          <div className="text-center py-5">{children}</div>
+    <div>
+      <Nav />
+      <div className="min-h-[89.5vh] grid grid-cols-5 bg-gray-50">
+        <SideNav />
+        <div className="col-span-4 mt-2 mb-2 mr-2 rounded-md w-auto p-4 bg-gray-200 shadow-md">
+          <div className="">{children}</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Layout from "@/layout/layout";
+import FormLayout from "@/layout/formLayout";
 import Link from "next/link";
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
 import styles from "../styles/login.module.css";
@@ -36,7 +36,7 @@ const Register = () => {
   }
 
   return (
-    <Layout>
+    <FormLayout>
       <Head>
         <title>Register</title>
       </Head>
@@ -159,7 +159,7 @@ const Register = () => {
           </Link>
         </p>
       </section>
-    </Layout>
+    </FormLayout>
   );
 };
 

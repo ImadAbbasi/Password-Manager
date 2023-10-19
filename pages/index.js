@@ -1,6 +1,7 @@
 "use client";
 import Head from "next/head";
 import { getSession, signOut, useSession } from "next-auth/react";
+import Layout from "@/layout/Layout";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -10,11 +11,11 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Home</title>
       </Head>
-      <main className="flex flex-col justify-center items-center w-full h-screen">
+      <main className="flex flex-col justify-center items-center w-full">
         <div className="text-blue-400 text-3xl font-bold underline">
           Hello World!
         </div>
@@ -31,7 +32,7 @@ export default function Home() {
           </button>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 
