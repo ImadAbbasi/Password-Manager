@@ -9,9 +9,9 @@ import { CgPassword } from "react-icons/cg";
 
 const SideNav = () => {
   const inActiveLink =
-    "text-lg flex items-center text-gray-800 gap-1 font-semibold hover:scale-105 transition duration-300 hover:text-blue-400 w-full";
+    "text-lg flex items-center gap-1 rounded-md text-gray-800 font-semibold hover:scale-105 transition duration-300 hover:text-blue-400 w-full";
   const activeLink =
-    "text-lg flex items-center gap-1 font-bold scale-105 shadow-md p-1 text-blue-400 w-full border-r-4 border-blue-400";
+    "text-lg flex items-center gap-1 rounded-md font-bold scale-105 shadow-md p-1 bg-gradient-to-r from-blue-400 to-fuchsia-300 text-white w-full border-r-4 border-white";
   const router = useRouter();
   const { pathname } = router;
 

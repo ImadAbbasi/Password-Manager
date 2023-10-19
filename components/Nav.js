@@ -9,6 +9,9 @@ const Nav = () => {
   const [dropdown, setDropdown] = useState(false);
   const { data: session } = useSession();
   const email = session?.user?.email;
+  const image = session?.user?.image;
+  console.log(session);
+  console.log(session.user.image);
 
   function handleSignOut() {
     signOut();
@@ -32,9 +35,9 @@ const Nav = () => {
           <div>
             {session?.user?.image ? (
               <img
-                src={session?.user?.image}
+                src={image}
                 alt="user-pic"
-                className="w-8 h-8 rounded-full bg-blue-400"
+                className="w-8 h-8 rounded-full"
               />
             ) : (
               <div>
@@ -57,7 +60,7 @@ const Nav = () => {
         <div className="absolute top-16 right-10 py-4 px-6 rounded-md bg-gradient-to-r from-blue-400 to-fuchsia-300 shadow-md">
           <div className="">
             <p className="text-gray-100 font-semibold border-b-2">
-              {session?.user?.email}
+              {session?.user?.name ? session.user.name : email}
             </p>
             {/* <hr className="" /> */}
             <button
