@@ -10,8 +10,6 @@ const Nav = () => {
   const { data: session } = useSession();
   const email = session?.user?.email;
   const image = session?.user?.image;
-  console.log(session);
-  console.log(session.user.image);
 
   function handleSignOut() {
     signOut();

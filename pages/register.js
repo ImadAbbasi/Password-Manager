@@ -127,7 +127,7 @@ const Register = () => {
               className="px-4"
               onClick={() => setShow({ ...show, cpassword: !show.cpassword })}
             >
-              <HiFingerPrint size={20} className="" />
+              <HiFingerPrint size={20} />
             </span>
           </div>
           {formik.errors.cpassword && formik.touched.cpassword ? (
@@ -142,7 +142,7 @@ const Register = () => {
           <div className="input-button">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-400 to-fuchsia-300 border rounded-md py-2 text-gray-50 text-lg font-semibold hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 hover:border-blue-500 hover:text-gray-700 hover:border duration-300"
+              className="w-full bg-gradient-to-r from-blue-400 to-fuchsia-300 rounded-md py-2 text-gray-50 text-lg font-semibold hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 hover:border-blue-500 hover:text-gray-700 hover:border duration-300"
             >
               Register
             </button>
