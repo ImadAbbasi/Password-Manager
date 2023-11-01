@@ -16,7 +16,7 @@ const Nav = () => {
   }
 
   return (
-    <div className="shadow-md bg-gray-100 w-full sticky top-0">
+    <div className="shadow-md bg-gray-100 w-full h-[3.7rem] sticky top-0 z-50">
       <div className="flex justify-between items-center py-2 mx-2 md:mx-5">
         <div className="flex">
           <Link href={"/"} className="text-2xl flex items-center gap-2">
@@ -24,7 +24,7 @@ const Nav = () => {
               size={44}
               className="text-blue-400 p-1 md:p-2 border-2 rounded-full shadow-sm"
             />
-            <span className="font-bold hidden md:block text-transparent bg-gradient-to-r from-blue-400 to-fuchsia-300 bg-clip-text ">
+            <span className="font-bold text-lg md:text-3xl block text-transparent bg-gradient-to-r from-blue-400 to-fuchsia-300 bg-clip-text ">
               Pass Manager
             </span>
           </Link>

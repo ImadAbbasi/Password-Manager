@@ -11,24 +11,13 @@ const SideNav = () => {
   const inActiveLink =
     "text-lg flex items-center gap-1 rounded-md text-gray-800 font-semibold hover:scale-105 transition duration-300 hover:text-blue-400 w-full";
   const activeLink =
-    "text-lg flex items-center gap-1 rounded-md font-bold scale-105 shadow-md p-1 bg-gradient-to-r from-blue-400 to-fuchsia-300 text-white w-full border-r-4 border-white";
+    "text-lg flex items-center gap-1 rounded-md font-bold scale-105 shadow-md p-1 bg-gradient-to-r from-blue-400 to-fuchsia-300 text-white md:w-full md:border-r-4 border-white";
   const router = useRouter();
   const { pathname } = router;
 
   return (
     <div className="p-2 md:p-5 col-span-1">
       <div className="flex flex-col flex-shrink gap-8">
-        {/* <div className="flex">
-          <Link href={"/"} className="text-2xl flex items-center gap-2">
-            <RiLockPasswordFill
-              size={40}
-              className="text-blue-400 p-1 border-2 mt-2 rounded-full shadow-sm"
-            />
-            <span className="font-bold hidden md:block text-transparent bg-gradient-to-r from-blue-400 to-fuchsia-300 bg-clip-text ">
-              Pass Manager
-            </span>
-          </Link>
-        </div> */}
         <div className="flex flex-col justify-center items-center md:items-stretch gap-4">
           <div className="flex">
             <Link
@@ -67,7 +56,7 @@ const SideNav = () => {
               className={pathname === "/generate" ? activeLink : inActiveLink}
             >
               <CgPassword size={25} />
-              <span className="hidden md:block">Password Generator</span>
+              <span className="hidden md:block">PassGenerator</span>
             </Link>
           </div>
         </div>

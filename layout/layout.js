@@ -6,9 +6,9 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Nav />
-      <div className="min-h-[89.5vh] grid grid-cols-5 bg-gray-50">
+      <div className="absolute z-10 top-[3.7rem] w-[100vw] bottom-0 grid grid-cols-6 md:grid-cols-5 bg-gray-100">
         <SideNav />
-        <div className="col-span-4 mt-2 mb-2 mr-2 rounded-md w-auto p-4 bg-gray-200 shadow-md">
+        <div className="col-span-5 md:col-span-4 max-h-full overflow-y-scroll mt-2 mb-2 mr-2 rounded-md w-auto p-4 bg-gray-200 shadow-md">
           <div className="">{children}</div>
         </div>
       </div>

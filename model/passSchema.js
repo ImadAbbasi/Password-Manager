@@ -1,4 +1,3 @@
-import { Timestamp } from "mongodb";
 import { Schema, models, model } from "mongoose";
 
 const PasswordSchema = new Schema(
@@ -9,7 +8,7 @@ const PasswordSchema = new Schema(
     password: String,
     ref: String,
   },
-  Timestamp
+  { timestamps: true }
 );
 
 const Passwords = models.password || model("password", PasswordSchema);
