@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "crypto-js": "^4.2.0",
     "firebase": "^10.5.0",
     "formik": "^2.4.5",
     "mongodb": "^6.1.0",

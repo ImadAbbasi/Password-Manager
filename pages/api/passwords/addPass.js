@@ -1,6 +1,6 @@
 import connectMongo from "@/database/conn";
 import Passwords from "@/model/passSchema";
-import { hash } from "bcryptjs";
+import CryptoJS from "crypto-js"; // Import crypto-js
 
 export default async function handler(req, res) {
   connectMongo().catch((error) => res.json({ error: "Connection Failed!" }));
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (!site || !username || !email || !password) {
       return res
         .status(400)
-        .json({ error: "Missing required filds in the body!" });
+        .json({ error: "Missing required fields in the body!" });
     }
 
     // Check for existing data
@@ -21,17 +21,23 @@ export default async function handler(req, res) {
       $and: [{ email }, { site }],
     });
     if (existingData) {
-      return res.status(201).json({ message: "Already exist" });
+      return res.status(201).json({ message: "Already exists" });
     }
 
-    // if does not exist
+    // Encrypt the password
+    const encryptedPassword = CryptoJS.AES.encrypt(
+      password,
+      process.env.CRYPTO_SECRET_KEY
+    ).toString();
+
+    // If you need to decrypt the password later, store the secret key securely.
 
     try {
       const pass = await Passwords.create({
         site,
         username,
         email,
-        password: await hash(password, 12),
+        password: encryptedPassword, // Store the encrypted password
         ref,
       });
       res.status(201).json({ status: true, pass });
@@ -41,7 +47,7 @@ export default async function handler(req, res) {
   } else {
     res
       .status(500)
-      .json({ message: "HTTP method not valid only POST method allowed!" });
+      .json({ message: "HTTP method not valid, only POST method allowed!" });
   }
   res.json({ message: "Added Password" });
 }
