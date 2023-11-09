@@ -24,7 +24,7 @@ const SideNav = () => {
               href={"/"}
               className={pathname === "/" ? activeLink : inActiveLink}
             >
-              <AiFillHome size={25} />
+              <AiFillHome size={25} className="block md:hidden lg:block" />
               <span className="hidden md:block">DashBoard</span>
             </Link>
           </div>
@@ -35,7 +35,7 @@ const SideNav = () => {
                 pathname.includes("/passwords") ? activeLink : inActiveLink
               }
             >
-              <MdPassword size={25} />
+              <MdPassword size={25} className="block md:hidden lg:block" />
               <span className="hidden md:block">Passwords</span>
             </Link>
           </div>
@@ -46,7 +46,7 @@ const SideNav = () => {
                 pathname.includes("/notes") ? activeLink : inActiveLink
               }
             >
-              <FaStickyNote size={23} />
+              <FaStickyNote size={23} className="block md:hidden lg:block" />
               <span className="hidden md:block">Notes</span>
             </Link>
           </div>
@@ -55,7 +55,7 @@ const SideNav = () => {
               href={"generate"}
               className={pathname === "/generate" ? activeLink : inActiveLink}
             >
-              <CgPassword size={25} />
+              <CgPassword size={25} className="block md:hidden lg:block" />
               <span className="hidden md:block">PassGenerator</span>
             </Link>
           </div>

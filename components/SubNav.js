@@ -7,7 +7,7 @@ const SubNav = ({ link1, link2, path1, path2 }) => {
   const { pathname } = router;
 
   const linkClass = (path) =>
-    `text-base sm:text-lg md:text-xl font-semibold py-2 px-4 ${
+    `text-xs md:text-lg font-semibold py-2 px-4 ${
       pathname === path
         ? "text-blue-400 border-b-4 border-blue-400"
         : "text-gray-800 hover:text-blue-400"
