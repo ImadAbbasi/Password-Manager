@@ -43,6 +43,7 @@ const NoteDetails = () => {
 
       const data = await response.json();
       setNote(data.updatedNote);
+      router.reload();
     } catch (error) {
       console.error("Error updating note:", error);
     }
