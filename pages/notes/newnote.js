@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "@/layout/Layout";
 import { useFormik } from "formik";
 import { add_note_validate } from "@/lib/validate";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const NewNote = () => {

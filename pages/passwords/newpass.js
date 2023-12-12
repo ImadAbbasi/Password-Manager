@@ -8,7 +8,7 @@ import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
 import { CgWebsite } from "react-icons/cg";
 
 import { add_pass_validate } from "@/lib/validate";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const New = () => {

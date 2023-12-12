@@ -5,12 +5,13 @@ import { getSession, useSession } from "next-auth/react";
 import Search from "@/components/Search";
 
 import { MdDelete } from "react-icons/md";
+import { deletePassword } from "@/utils/delete";
 
 const Passwords = () => {
   const { data: session } = useSession();
   const [passwords, setPasswords] = useState([]);
   const [searchedPass, setSearchedPass] = useState([]);
-  const [tooltip, setTooltip] = useState(true);
+  const [tooltip, setTooltip] = useState(false);
 
   useEffect(() => {
     if (session) {
@@ -19,7 +20,11 @@ const Passwords = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          setPasswords(data);
+          // Sort passwords alphabetically by site name
+          const sortedPasswords = data.sort((a, b) =>
+            a.site.localeCompare(b.site)
+          );
+          setPasswords(sortedPasswords);
         })
         .catch((error) => {
           console.error("Error fetching Saved Passwords", error);
@@ -52,11 +57,19 @@ const Passwords = () => {
     document.body.removeChild(textArea);
   };
 
+  const handleDeletePassword = async (id) => {
+    try {
+      await deletePassword(id);
+    } catch (error) {
+      console.error("Error deleting password:", error);
+    }
+  };
+
   return (
     <Layout>
       <SubNav
         link1="Passwords"
-        link2="AddNew"
+        link2="Add New"
         path1="/passwords"
         path2="/passwords/newpass"
       />
@@ -69,7 +82,7 @@ const Passwords = () => {
             ? searchedPass?.map((pass) => (
                 <div
                   key={pass._id}
-                  className="bg-gray-100 p-2 md:p-5 flex flex-col md:flex-row justify-between items-center gap-1 md:gap-0"
+                  className="bg-gray-100 p-2 md:p-5 flex flex-col md:flex-row justify-between items-center gap-1 md:gap-0 rounded-md shadow-sm hover:shadow-lg transition duration-200"
                 >
                   <div>
                     <h2 className="text-blue-400 text-base md:text-lg font-bold uppercase overflow-clip text-center md:text-left">
@@ -93,7 +106,10 @@ const Passwords = () => {
                         </div>
                       )}
                     </button>
-                    <button className="p-1 w-7 h-7 border-2 border-rose-500 bg-rose-500 hover:bg-inherit text-sm md:text-base hover:text-rose-500 rounded-full text-white font-semibold transition-all duration-300 shadow-md flex justify-between items-center">
+                    <button
+                      className="p-1 w-7 h-7 border-2 border-rose-500 bg-rose-500 hover:bg-inherit text-sm md:text-base hover:text-rose-500 rounded-full text-white font-semibold transition-all duration-300 shadow-md flex justify-between items-center"
+                      onClick={() => handleDeletePassword(pass._id)}
+                    >
                       <MdDelete size={20} />
                     </button>
                   </div>
@@ -102,7 +118,7 @@ const Passwords = () => {
             : passwords?.map((pass) => (
                 <div
                   key={pass._id}
-                  className="bg-gray-100 p-2 md:p-5 flex flex-col md:flex-row justify-between items-center gap-1 md:gap-0"
+                  className="bg-gray-100 p-2 md:p-5 flex flex-col md:flex-row justify-between items-center gap-1 md:gap-0 rounded-md shadow-sm hover:shadow-lg transition duration-200"
                 >
                   <div>
                     <h2 className="text-blue-400 text-base md:text-lg font-bold uppercase overflow-clip text-center md:text-left">
@@ -130,7 +146,10 @@ const Passwords = () => {
                       </div>
                     )}
 
-                    <button className="p-1 w-7 h-7 border-2 border-rose-500 bg-rose-500 hover:bg-inherit text-sm md:text-base hover:text-rose-500 rounded-full text-white font-semibold transition-all duration-300 shadow-md flex justify-between items-center">
+                    <button
+                      className="p-1 w-7 h-7 border-2 border-rose-500 bg-rose-500 hover:bg-inherit text-sm md:text-base hover:text-rose-500 rounded-full text-white font-semibold transition-all duration-300 shadow-md flex justify-between items-center"
+                      onClick={() => handleDeletePassword(pass._id)}
+                    >
                       <MdDelete size={20} />
                     </button>
                   </div>

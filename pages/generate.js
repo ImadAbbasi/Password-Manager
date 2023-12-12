@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "@/layout/Layout";
+import { getSession } from "next-auth/react";
 
 const Generate = () => {
   return (
